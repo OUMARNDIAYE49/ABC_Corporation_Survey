@@ -16,13 +16,13 @@ Avant de commencer, assurez-vous d'avoir installé les éléments suivants :
 Suivez ces étapes pour configurer le projet sur votre machine locale :
 
 1. **Clonez le repository :**
-   git clone https://github.com/OUMARNDIAYE49/ABC_Corporation_Survey.git
+  ```git clone https://github.com/OUMARNDIAYE49/ABC_Corporation_Survey.git ```
 
 2. **Accédez au dossier du projet :**
-   cd fiches-enquete-satisfaction
+   ````cd fiches-enquete-satisfaction````
 
 3. **Installez les dépendances :**
-   npm install
+   ````npm install````
 
 4. **Configurez la base de données :**
    - Assurez-vous que MongoDB est en cours d'exécution sur votre machine locale.
@@ -58,9 +58,9 @@ node app.js
 
 # Documentation des Modules et les fonctions
 
-## Module `surveys.js`
+## Module surveys.js
 
-### 1. `createSurvey(surveyData)`
+### 1. createSurvey(surveyData)
 
 - **Description** : Crée une nouvelle enquête dans la base de données.
 - **Paramètres d'entrée** :
@@ -74,25 +74,25 @@ node app.js
       - `employeeName` (String) : Nom de l'employé.
       - `employeeRole` (String) : Rôle de l'employé.
 
-### 2. `getSurveys()`
+### 2. getSurveys()
 
 - **Description** : Récupère toutes les enquêtes dans la base de données.
 - **Paramètres d'entrée** : Aucun
 
-### 3. `getSurveyById(surveyId)`
+### 3. getSurveyById(surveyId)
 
 - **Description** : Récupère une enquête par son ID.
 - **Paramètres d'entrée** :
   - `surveyId` (Number) : Identifiant unique de l'enquête.
 
-### 4. `updateSurveyById(surveyId, updateData)`
+### 4. updateSurveyById(surveyId, updateData)
 
 - **Description** : Met à jour une enquête par son ID.
 - **Paramètres d'entrée** :
   - `surveyId` (Number) : Identifiant unique de l'enquête.
   - `updateData` (Object) : Données à mettre à jour.
 
-### 5. `deleteSurveyById(surveyId)`
+### 5. deleteSurveyById(surveyId)
 
 - **Description** : Supprime une enquête par son ID.
 - **Paramètres d'entrée** :
@@ -100,9 +100,9 @@ node app.js
 
 ---
 
-## Module `questions.js`
+## Module questions.js
 
-### 1. `createQuestion(questionData)`
+### 1. createQuestion(questionData)
 
 - **Description** : Crée une nouvelle question dans la base de données.
 - **Paramètres d'entrée** :
@@ -111,25 +111,25 @@ node app.js
     - `surveyId` (Number) : Identifiant unique de l'enquête associée.
     - `questionText` (String) : Texte de la question.
 
-### 2. `getQuestions()`
+### 2. getQuestions()
 
 - **Description** : Récupère toutes les questions dans la base de données.
 - **Paramètres d'entrée** : Aucun
 
-### 3. `getQuestionById(questionId)`
+### 3. getQuestionById(questionId)
 
 - **Description** : Récupère une question par son ID.
 - **Paramètres d'entrée** :
   - `questionId` (Number) : Identifiant unique de la question.
 
-### 4. `updateQuestionById(questionId, updateData)`
+### 4. updateQuestionById(questionId, updateData)
 
 - **Description** : Met à jour une question par son ID.
 - **Paramètres d'entrée** :
   - `questionId` (Number) : Identifiant unique de la question.
   - `updateData` (Object) : Données à mettre à jour.
 
-### 5. `deleteQuestionById(questionId)`
+### 5. deleteQuestionById(questionId)
 
 - **Description** : Supprime une question par son ID.
 - **Paramètres d'entrée** :
@@ -137,9 +137,9 @@ node app.js
 
 ---
 
-## Module `answers.js`
+## Module answers.js
 
-### 1. `createAnswer(answerData)`
+### 1. createAnswer(answerData)
 
 - **Description** : Crée une nouvelle réponse dans la base de données.
 - **Paramètres d'entrée** :
@@ -149,25 +149,25 @@ node app.js
     - `questionId` (Number) : Identifiant unique de la question associée.
     - `answerText` (String) : Texte de la réponse.
 
-### 2. `getAnswers()`
+### 2. getAnswers()
 
 - **Description** : Récupère toutes les réponses dans la base de données.
 - **Paramètres d'entrée** : Aucun
 
-### 3. `getAnswerById(answerId)`
+### 3. getAnswerById(answerId)
 
 - **Description** : Récupère une réponse par son ID.
 - **Paramètres d'entrée** :
   - `answerId` (Number) : Identifiant unique de la réponse.
 
-### 4. `updateAnswerById(answerId, updateData)`
+### 4. updateAnswerById(answerId, updateData)
 
 - **Description** : Met à jour une réponse par son ID.
 - **Paramètres d'entrée** :
   - `answerId` (Number) : Identifiant unique de la réponse.
   - `updateData` (Object) : Données à mettre à jour.
 
-### 5. `deleteAnswerById(answerId)`
+### 5. deleteAnswerById(answerId)
 
 - **Description** : Supprime une réponse par son ID.
 - **Paramètres d'entrée** :
@@ -186,11 +186,12 @@ Ouvrez une Pull Request.
 
 Pour vous familiariser rapidement avec le projet et commencer à l'utiliser :
 
-    Configurer l'environnement : Suivez les étapes d'installation ci-dessus pour mettre en place le projet localement.
-    Comprendre la structure du projet : Jetez un œil à la structure des dossiers pour voir comment les modules sont organisés.
-    Démarrer l'application : Utilisez npm start pour lancer l'application, qui sera disponible sur http://localhost:3000.
-    Tester les fonctionnalités de base : Une fois l'application démarrée, vous pouvez tester les différentes fonctionnalités CRUD en interagissant
-    avec l'API via un outil comme Postman ou via le navigateur.
+Configurer l'environnement : Suivez les étapes d'installation ci-dessus pour mettre en place le projet localement.
 
-Authors
-Oumar Djiby Ndiaye https://github.com/OUMARNDIAYE49/ABC_Corporation_Survey.git
+Comprendre la structure du projet : Jetez un œil à la structure des dossiers pour voir comment les modules sont organisés.
+Démarrer l'application : Utilisez npm start pour lancer l'application, qui sera disponible sur http://localhost:3000.
+Tester les fonctionnalités de base : Une fois l'application démarrée, vous pouvez tester les différentes fonctionnalités CRUD en interagissant
+avec l'API via un outil comme Postman ou via le navigateur.
+
+## Authors
+ [Oumar Djiby Ndiaye ](https://github.com/OUMARNDIAYE49/ABC_Corporation_Survey.git)
