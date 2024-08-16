@@ -1,23 +1,7 @@
-const { MongoClient } = require('mongodb');
+const { MongoClient } = require("mongodb");
 
-const uri = 'mongodb://localhost:27017';
-const dbName = 'ABC_Corporation_Surveys';
-let db;
+const client = new MongoClient("mongodb://localhost:27017");
 
-const connectDB = async () => {
-  try {
-    const client = new MongoClient(uri);
-    await client.connect();
-    db = client.db(dbName);
-    console.log(`Connected to database: ${dbName}`);
-  } catch (err) {
-    console.error('MongoDB connection error:', err);
-    process.exit(1);
-  }
-};
+const dbName = "abc_corporation_survey";
 
-const getDB = () => db;
-
-module.exports = { connectDB, getDB };
-
-connectDB()
+module.exports = { client, dbName };

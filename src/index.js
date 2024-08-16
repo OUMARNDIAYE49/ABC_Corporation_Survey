@@ -1,195 +1,110 @@
-const surveys = require("./surveys");
-const questions = require("./questions");
-const answers = require("./answers");
+const surveys = require("./surveyModule");
+const questions = require("./questionModule");
+const answers = require("./answerModule");
 
-// const newSurvey = {
-//   surveyId: 5,
-//   name: "Enquête de Satisfaction 001",
-//   description:
-//     "Enquête visant à évaluer la satisfaction des clients .",
-//   createdAt: "2024-07-25T08:00:00Z",
-//   createdBy: {
-//     employeeName: "Jane Smith",
-//     employeeRole: "Responsable du service client",
-//   },
-// };
+const runTests = async () => {
+  try {
+    // 1. Créer une enquête
+    const newSurvey = {
+      surveyId: 3,
+      title: "Satisfaction client et moi",
+      name: "Enquête de Satisfaction 001",
+      description:
+        "Enquête visant à évaluer la satisfaction des clients concernant nos se…",
+      createdAt: "2024-07-25T08:00:00Z",
+      createdBy: {
+        employeeName: "Amadou Sow",
+        employeeRole: "Responsable des apprenants",
+      },
+    };
+    await surveys.createSurvey(newSurvey);
 
-// surveys
-//   .createSurvey(newSurvey)
-//   .then((result) => {
-//     console.log("Survey created:", result.insertedId);
-//   })
-//   .catch((error) => {
-//     console.error("Error creating survey:", error);
-//   });
+    // 2. Créer une question
+    const newQuestion = {
+      questionId: 5,
+      surveyId: 1,
+      questionText: "Quelle est votre couleur ?",
+    };
+    await questions.createQuestion(newQuestion);
 
-// surveys
-//   .getSurveys()
-//   .then((results) => {
-//     console.log("All surveys:", results);
-//   })
-//   .catch((error) => {
-//     console.error("Error fetching surveys:", error);
-//   });
+    // 3. Créer une réponse
+    const newAnswer = {
+      answerId: 4,
+      surveyId: 1,
+      questionId: 1,
+      answerText: "Noir",
+    };
+    await answers.createAnswer(newAnswer);
 
-// surveys
-//   .getSurveyById(3)
-//   .then((result) => {
-//     console.log("Survey with ID 1:", result);
-//   })
-//   .catch((error) => {
-//     console.error("Error fetching survey:", error);
-//   });
+    // 4. Obtenir toutes les enquêtes
+    const surveysList = await surveys.getSurveys();
+    console.log("Toutes les enquêtes:", surveysList);
 
-// const updatedSurveyData = {
-//   surveyId: 5,
-//   name: "Enquête de Satisfaction 001",
-//   description: "Enquête visant à évaluer la satisfaction des clients .",
-//   createdAt: "2024-07-25T08:00:00Z",
-//   createdBy: {
-//     employeeName: "Mamoudou Ba",
-//     employeeRole: "Responsable du service client",
-//   },
-// };
+    // 5. Obtenir toutes les questions
+    const questionsList = await questions.getQuestions();
+    console.log("Toutes les questions:", questionsList);
 
-// surveys
-//   .updateSurveyById(5, updatedSurveyData)
-//   .then((result) => {
-//     console.log("mise à jour succes:", result.modifiedCount);
-//   })
-//   .catch((error) => {
-//     console.error("Error updating survey:", error);
-//   });
+    // 6. Obtenir toutes les réponses
+    const answersList = await answers.getAnswers();
+    console.log("Toutes les réponses:", answersList);
 
-// surveys
-//   .deleteSurveyById(1)
-//   .then((result) => {
-//     console.log("Survey deleted:", result.deletedCount);
-//   })
-//   .catch((error) => {
-//     console.error("Error deleting survey:", error);
-//   });
+    // 7. Obtenir une enquête par ID
+    const survey = await surveys.getSurveyById(5);
 
-// const newQuestion = {
-//   questionId: 8,
-//   surveyId: 1,
-//   title: "Comment évalueriez-vous notre service ?",
-//   type: "rating",
-//   options: {
-//     minValue: 1,
-//     maxValue: 5,
-//     step: 1,
-//   },
-// };
+    // 8. Obtenir une question par ID
+    const question = await questions.getQuestionById(1);
 
-// questions
-//   .createQuestion(newQuestion)
-//   .then((result) => {
-//     console.log("Question est ajouté:", result.insertedId);
-//   })
-//   .catch((error) => {
-//     console.error("Erreur de création question:", error);
-//   });
+    // 9. Obtenir une réponse par ID
+    const answer = await answers.getAnswerById(1);
 
-// questions
-//   .getQuestions()
-//   .then((results) => {
-//     console.log("Toutes les questions:", results);
-//   })
-//   .catch((error) => {
-//     console.error("Erreur lors de la récupération des questions:", error);
-//   });
+    // 10. Mettre à jour une enquête par ID
+    await surveys.updateSurveyById(1, {
+      title: "Satisfaction client - Mise à jour sans probleme",
+      name: "Enquête de Satisfaction 001",
+      description:
+        "Enquête visant à évaluer la satisfaction des clients concernant nos se…",
+      createdAt: "2024-07-25T08:00:00Z",
+      createdBy: {
+        employeeName: "Aly Sy",
+        employeeRole: "Responsable des apprenants",
+      },
+    });
 
-// questions
-//   .getQuestionById(5)
-//   .then((result) => {
-//     console.log("Question avec ID 1:", result);
-//   })
-//   .catch((error) => {
-//     console.error("Erreur lors de la récupération des questions:", error);
-//   });
+    // 11. Mettre à jour une question par ID
+    await questions.updateQuestionById(1, {
+      questionText:
+        "Quelle est votre couleur préférée aujourd'hui et les jours avenir?",
+    });
 
-const updatedQuestionData = {
-    questionId: 8,
-    surveyId: 1,
-    title: "Comment évaluez-vous notre service global ?",
-    type: "rating",
-    options: {
-        minValue: 1,
-        maxValue: 5,
-        step: 1,
-    },
+    // 12. Mettre à jour une réponse par ID
+    await answers.updateAnswerById(1, { answerText: "Vert" });
+
+    // 13. Supprimer une enquête par ID
+    await surveys.deleteSurveyById(1);
+
+    // 14. Supprimer une question par ID
+    await questions.deleteQuestionById(1);
+
+    // 15. Supprimer une réponse par ID
+    await answers.deleteAnswerById(1);
+
+    // 16. Vérifier la suppression
+    const surveysAfterDeletion = await surveys.getSurveys();
+    console.log("Toutes les enquêtes après suppression:", surveysAfterDeletion);
+
+    const questionsAfterDeletion = await questions.getQuestions();
+    console.log(
+      "Toutes les questions après suppression:",
+      questionsAfterDeletion
+    );
+
+    const answersAfterDeletion = await answers.getAnswers();
+    console.log("Toutes les réponses après suppression:", answersAfterDeletion);
+  } catch (error) {
+    console.error("Erreur lors de l'exécution des tests:", error);
+  } finally {
+  }
 };
 
-questions
-  .updateQuestionById(0, updatedQuestionData)
-  .then((result) => {
-    console.log("mis a ajoure succes:", result.modifiedCount);
-  })
-  .catch((error) => {
-    console.error("Erreur lors de la mise à jour des questions:", error);
-  });
-
-// D;
-// questions
-//   .deleteQuestionById(1)
-//   .then((result) => {
-//     console.log("Question suprimés:", result.deletedCount);
-//   })
-//   .catch((error) => {
-//     console.error("Erreur lors de supression des questions:", error);
-//   });
-
-// const newAnswer = {
-//   answerId: 1,
-//   questionId: 1,
-//   title: "Très satisfait",
-// };
-
-// answers
-//   .createAnswer(newAnswer)
-//   .then((result) => {
-//     console.log("Answer created:", result.insertedId);
-//   })
-//   .catch((error) => {
-//     console.error("Error creating answer:", error);
-//   });
-
-// answers
-//   .getAnswers()
-//   .then((results) => {
-//     console.log("All answers:", results);
-//   })
-//   .catch((error) => {
-//     console.error("Error fetching answers:", error);
-//   });
-
-// answers
-//   .getAnswerById(1)
-//   .then((result) => {
-//     console.log("Answer with ID 1:", result);
-//   })
-//   .catch((error) => {
-//     console.error("Error fetching answer:", error);
-//   });
-
-// const updatedAnswerData = {
-//   title: "faible satisfait",
-// };
-// answers
-//   .updateAnswerById(1, updatedAnswerData)
-//   .then((result) => {
-//     console.log("Answer updated:", result.modifiedCount);
-//   })
-//   .catch((error) => {
-//     console.error("Error updating answer:", error);
-//   });
-
-// answers
-//   .deleteAnswerById(1)
-//   .then((result) => {
-//     console.log("Answer deleted:", result.deletedCount);
-//   })
-//   .catch((error) => {
-//     console.error("Error deleting answer:", error);
-//   });
+// Exécuter les tests
+runTests();
