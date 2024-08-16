@@ -19,7 +19,7 @@ Suivez ces étapes pour configurer le projet sur votre machine locale :
   ```git clone https://github.com/OUMARNDIAYE49/ABC_Corporation_Survey.git ```
 
 2. **Accédez au dossier du projet :**
-   ````cd abc-survey-app-main````
+   ````cd ABC_Corporation_Survey````
 
 3. **Installez les dépendances :**
    ````npm install````
@@ -28,6 +28,10 @@ Suivez ces étapes pour configurer le projet sur votre machine locale :
    - Assurez-vous que MongoDB est en cours d'exécution sur votre machine locale.
    - Mettez les paramètres de connexion dans `config/database.js`.
 
+## Utilisation
+Pour démarrer l'application, exécutez la commande suivante :
+
+  ````npm start````
 
 # Démarrer l'Application
 
@@ -70,15 +74,15 @@ node app.js
 - **Description** : Met à jour une enquête par son ID.
 - **Paramètres d'entrée** :
   - `surveyId` (Number) : Identifiant unique de l'enquête.
-  - `updateData` (Object) : Données à mettre à jour par exemple(title: "Satisfaction client - Mise à jour sans probleme",
-      name: "Enquête de Satisfaction 001",
-      description:
-        "Enquête visant à évaluer la satisfaction des clients concernant nos se…",
-      createdAt: "2024-07-25T08:00:00Z",
-      createdBy: {
-        employeeName: "Aly Sy",
-        employeeRole: "Responsable des apprenants",
-      }).
+  - `updateData` (Object) :  Description de l'enquête.
+  - `title` (String) : Titre de l'enquête.
+    `name`(string):  Nom de l'enquête.
+    `description`(string):"Enquête visant à évaluer la satisfaction des clients concernant nos se…".
+    `createdAt`(string): Date de création de l'enquête au format ISO.
+    `createdBy`(Object): Détails de l'employé ayant créé l'enquête.
+        `employeeName`(string):Nom de l'employé.
+        `employeeRole`(string): Rôle de l'employé.
+      
 
 ### 5. deleteSurveyById(surveyId)
 
@@ -94,7 +98,7 @@ node app.js
 
 - **Description** : Crée une nouvelle question dans la base de données.
 - **Paramètres d'entrée** :
-  - `questionData` (Object) : Les données de la question à créer.
+    - `questionData` (Object) : Les données de la question à créer.
     - `questionId` (Number) : Identifiant unique de la question.
     - `surveyId` (Number) : Identifiant unique de l'enquête associée.
     - `questionText` (String) : Texte de la question.
@@ -115,8 +119,8 @@ node app.js
 - **Description** : Met à jour une question par son ID.
 - **Paramètres d'entrée** :
   - `questionId` (Number) : Identifiant unique de la question.
-  - `updateData` (Object) : Données à mettre à jour par exemple(questionText:
-        "Quelle est votre couleur préférée aujourd'hui et les jours avenir?",).
+  - `updateData` (Object) : Données à mettre à jour par .
+  - `questionText` (String) : Texte de la question.
 
 ### 5. deleteQuestionById(questionId)
 
@@ -132,7 +136,7 @@ node app.js
 
 - **Description** : Crée une nouvelle réponse dans la base de données.
 - **Paramètres d'entrée** :
-  - `answerData` (Object) : Les données de la réponse à créer.
+    - `answerData` (Object) : Les données de la réponse à créer.
     - `answerId` (Number) : Identifiant unique de la réponse.
     - `surveyId` (Number) : Identifiant unique de l'enquête associée.
     - `questionId` (Number) : Identifiant unique de la question associée.
@@ -154,7 +158,8 @@ node app.js
 - **Description** : Met à jour une réponse par son ID.
 - **Paramètres d'entrée** :
   - `answerId` (Number) : Identifiant unique de la réponse.
-  - `updateData` (Object) : Données à mettre à jour par exemple( answerText: "Vert").
+  - `updateData` (Object) : Données à mettre à jour.
+  - `answerText` (String) : Texte de la réponse.
 
 ### 5. deleteAnswerById(answerId)
 
