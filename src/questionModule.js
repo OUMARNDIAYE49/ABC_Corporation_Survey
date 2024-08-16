@@ -34,6 +34,7 @@ const getQuestions = async () => {
   const collection = await getCollection();
   const questions = await collection.find().toArray();
   console.log("Questions récupérées:", questions.length);
+  console.log("Toutes les questions:", questions);
   return questions;
 };
 

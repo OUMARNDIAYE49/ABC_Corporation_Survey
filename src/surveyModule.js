@@ -31,6 +31,7 @@ const getSurveys = async () => {
   const collection = await getCollection();
   const surveys = await collection.find().toArray();
   console.log("Enquêtes récupérées:", surveys.length);
+  console.log("Toutes les enquêtes:", surveys);
   return surveys;
 };
 

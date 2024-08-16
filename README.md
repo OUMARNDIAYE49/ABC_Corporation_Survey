@@ -19,7 +19,7 @@ Suivez ces étapes pour configurer le projet sur votre machine locale :
   ```git clone https://github.com/OUMARNDIAYE49/ABC_Corporation_Survey.git ```
 
 2. **Accédez au dossier du projet :**
-   ````cd fiches-enquete-satisfaction````
+   ````cd abc-survey-app-main````
 
 3. **Installez les dépendances :**
    ````npm install````
@@ -28,26 +28,6 @@ Suivez ces étapes pour configurer le projet sur votre machine locale :
    - Assurez-vous que MongoDB est en cours d'exécution sur votre machine locale.
    - Mettez les paramètres de connexion dans `config/database.js`.
 
-## Utilisation
-
-Pour démarrer l'application, exécutez la commande suivante :
-npm start
-
-Structure du Projet
-
-abc-survey-app-main/
-│
-├── .env
-├── index.js
-├── package.json
-├── package-lock.json
-├── README.md
-├── src/
-│ ├── surveys.js
-│ ├── questions.js
-│ └── answers.js
-└── config/
-└── database.js
 
 # Démarrer l'Application
 
@@ -90,7 +70,15 @@ node app.js
 - **Description** : Met à jour une enquête par son ID.
 - **Paramètres d'entrée** :
   - `surveyId` (Number) : Identifiant unique de l'enquête.
-  - `updateData` (Object) : Données à mettre à jour.
+  - `updateData` (Object) : Données à mettre à jour par exemple(title: "Satisfaction client - Mise à jour sans probleme",
+      name: "Enquête de Satisfaction 001",
+      description:
+        "Enquête visant à évaluer la satisfaction des clients concernant nos se…",
+      createdAt: "2024-07-25T08:00:00Z",
+      createdBy: {
+        employeeName: "Aly Sy",
+        employeeRole: "Responsable des apprenants",
+      }).
 
 ### 5. deleteSurveyById(surveyId)
 
@@ -127,7 +115,8 @@ node app.js
 - **Description** : Met à jour une question par son ID.
 - **Paramètres d'entrée** :
   - `questionId` (Number) : Identifiant unique de la question.
-  - `updateData` (Object) : Données à mettre à jour.
+  - `updateData` (Object) : Données à mettre à jour par exemple(questionText:
+        "Quelle est votre couleur préférée aujourd'hui et les jours avenir?",).
 
 ### 5. deleteQuestionById(questionId)
 
@@ -154,7 +143,7 @@ node app.js
 - **Description** : Récupère toutes les réponses dans la base de données.
 - **Paramètres d'entrée** : Aucun
 
-### 3. getAnswerById(answerId)
+### 3. getAnswerById(answerId) 
 
 - **Description** : Récupère une réponse par son ID.
 - **Paramètres d'entrée** :
@@ -165,7 +154,7 @@ node app.js
 - **Description** : Met à jour une réponse par son ID.
 - **Paramètres d'entrée** :
   - `answerId` (Number) : Identifiant unique de la réponse.
-  - `updateData` (Object) : Données à mettre à jour.
+  - `updateData` (Object) : Données à mettre à jour par exemple( answerText: "Vert").
 
 ### 5. deleteAnswerById(answerId)
 
@@ -173,25 +162,6 @@ node app.js
 - **Paramètres d'entrée** :
   - `answerId` (Number) : Identifiant unique de la réponse.
 
-# Contribution
-
-Si vous souhaitez contribuer à ce projet, veuillez suivre ces étapes :
-Forkez le repository.
-Créez une branche (git checkout -b feature/AmazingFeature).
-Commitez vos changements (git commit -m 'Add some AmazingFeature').
-Poussez la branche (git push origin feature/AmazingFeature).
-Ouvrez une Pull Request.
-
-## Prise en Main Facile
-
-Pour vous familiariser rapidement avec le projet et commencer à l'utiliser :
-
-Configurer l'environnement : Suivez les étapes d'installation ci-dessus pour mettre en place le projet localement.
-
-Comprendre la structure du projet : Jetez un œil à la structure des dossiers pour voir comment les modules sont organisés.
-Démarrer l'application : Utilisez npm start pour lancer l'application, qui sera disponible sur http://localhost:3000.
-Tester les fonctionnalités de base : Une fois l'application démarrée, vous pouvez tester les différentes fonctionnalités CRUD en interagissant
-avec l'API via un outil comme Postman ou via le navigateur.
 
 ## Authors
  [Oumar Djiby Ndiaye ](https://github.com/OUMARNDIAYE49/ABC_Corporation_Survey.git)

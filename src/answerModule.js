@@ -31,6 +31,7 @@ const getAnswers = async () => {
   const collection = await getCollection();
   const answers = await collection.find().toArray();
   console.log("Réponses récupérées:", answers.length);
+  console.log("Toutes les réponses:", answers);
   return answers;
 };
 
