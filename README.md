@@ -136,6 +136,7 @@ Pour démarrer l'application, exécutez la commande suivante :
 - **Description** : Met à jour une question par son ID.
 - **Paramètres d'entrée** :
   - `questionId` (Number) : Identifiant unique de la question.
+  - `surveyId` (Number) : Identifiant unique de l'enquête associée.
   - `updateData` (Object) : Données à mettre à jour.
     - `questionText` (String) : Texte de la question.
 - **Retour** :
@@ -190,6 +191,8 @@ Pour démarrer l'application, exécutez la commande suivante :
 - **Description** : Met à jour une réponse par son ID.
 - **Paramètres d'entrée** :
   - `answerId` (Number) : Identifiant unique de la réponse.
+  - `surveyId` (Number) : Identifiant unique de l'enquête associée.
+  - `questionId` (Number) : Identifiant unique de la question associée.
   - `updateData` (Object) : Données à mettre à jour.
     - `answerText` (String) : Texte de la réponse.
 - **Retour** :
